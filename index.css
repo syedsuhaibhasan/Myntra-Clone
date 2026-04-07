@@ -118,6 +118,8 @@ header {
     margin: 40px 10%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    
 }
 
 .item-container{
@@ -196,6 +198,7 @@ header {
     font-weight: 700;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 /* footer CSS */
 
