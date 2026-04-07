@@ -1,3 +1,4 @@
+// DATA
 const item = [
     {
         id: '001',
@@ -118,21 +119,34 @@ const item = [
         },
     }
 ];
+// Onload functions
 loadOnHome();
-let bagItems = [];
+displayBagCount()
 
-function addToBag(item){
-    bagItems.push(item)
-    console.log(item);
+let bagItems = [];
+function addToBag(productID){
+    bagItems.push(productID)
+    console.log(bagItems);
+    displayBagCount();
 }
 
+function displayBagCount(){
+    let bagCount = document.querySelector('.bag-item-count');
+    if (bagCount > 0) {
+        bagCount.innerText = bagItems.length;    
+    }
+    else{
+        bagCount.style.visibility = 'hidden';
+    }
+    
+}
 
-function loadOnHome(){
+function loadOnHome() {
     let itemsContainerElement = document.querySelector('.items-container');
-
-    let innerHtml = '';
-    item.forEach(product => {
-    innerHtml += `
+    if (!itemsContainerElement) {
+        return;
+    }
+    itemsContainerElement.innerHTML = item.map(product => `
     <div class="item-container">
         <img class="item-image" src="${product.image}" alt="failed to image load">
         <div class="rating">
@@ -143,12 +157,9 @@ function loadOnHome(){
         <div class="price">
             <span class="current-price">Rs ${product.current_price}</span>
             <span class="original-price">Rs ${product.original_price}</span>
-            <span class="discount">${product.discount_percentage}% Off</span>
+            <span class="discount">(${product.discount_percentage}% OFF)</span>
         </div>
-        <button class="btn-add-bag" onclick = "addToBag();">Add to bag</button>
-        </div>
-        `
-    });
-
-    itemsContainerElement.innerHTML = innerHtml;
+        <button class="btn-add-bag" onclick="addToBag(${product.id})">Add to Bag</button>
+    </div>
+    `).join('');
 }
