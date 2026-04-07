@@ -119,20 +119,27 @@ const item = [
         },
     }
 ];
+let bagItems;
 // Onload functions
-loadOnHome();
-displayBagCount()
+onLoad();
+function onLoad(){
+    let bagItemsStr = localStorage.getItem('bagItems');
+    bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
+    loadOnHome();
+    displayBagCount();
+}
 
-let bagItems = [];
 function addToBag(productID){
     bagItems.push(productID)
+    localStorage.setItem('bagItems',JSON.stringify(bagItems));
     console.log(bagItems);
     displayBagCount();
 }
 
 function displayBagCount(){
     let bagCount = document.querySelector('.bag-item-count');
-    if (bagCount > 0) {
+    if (bagItems.length > 0) {
+        bagCount.style.visibility = 'visible';
         bagCount.innerText = bagItems.length;    
     }
     else{
