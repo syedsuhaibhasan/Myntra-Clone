@@ -12,63 +12,42 @@
 <body>
     <header>
         <div class="logo_container">
-           <a href="#"><img class="myntra_home" src="./images/myntra_logo.webp" alt=""></a>
+            <a href="#"><img class="myntra_home" src="images/myntra_logo.webp" alt="Myntra Home"></a>
         </div>
         <nav class="nav_bar">
-            <a href="#"><b>MEN</b></a>
-            <a href="#"><b>WOMEN</b></a>
-            <a href="#"><b>KIDS</b></a>
-            <a href="#"><b>HOME</b></a>
-            <a href="#"><b>BEAUTY</b></a>
-            <a href="#"><b>GENZ</b></a>
-            <a href="#"><b>STUDIO</b><sup><b>NEW</b></sup></a>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Kids</a>
+            <a href="#">Home & Living</a>
+            <a href="#">Beauty</a>
+            <a href="#">Studio <sup>New</sup></a>
         </nav>
         <div class="search_bar">
-            <a href="#" class="search_icon"><span class="material-symbols-outlined">search</span></a>
-            <div class="search_query_container">
-                <input id="search_query" placeholder="Search for products, brands and more">
-            </div>
+            <span class="material-symbols-outlined search_icon">search</span>
+            <input class="search_input" placeholder="Search for products, brands and more">
         </div>
-
         <div class="action_bar">
             <div class="action_container">
                 <span class="material-symbols-outlined action_icon">person</span>
                 <span class="action_name">Profile</span>
             </div>
+
             <div class="action_container">
-                <span class="material-symbols-outlined action_icon">
-                favorite
-                </span>
-                <span class="action_name">Whislist</span>
+                <span class="material-symbols-outlined action_icon">favorite</span>
+                <span class="action_name">Wishlist</span>
             </div>
-            <div class="action_container">
-                <span class="material-symbols-outlined action_icon">
-                shopping_bag
-                </span>
-                <span class="action_name">Bag</span>   
-            </div>
+
+            <a class="action_container" href="pages/bag.html">
+                <span class="material-symbols-outlined action_icon">shopping_bag</span>
+                <span class="action_name">Bag</span>
+            </a>
         </div>
     </header>
     <main>
-        <div class="banner_container">
-            <img class="banner_img" src="./images/banner.jpg" alt="not loading">
-        </div>
-        <div class="category_heading">medal worthy brands to items</div>
-        <div class="category_items">
-            <a href=""><img src="./images/categories/1.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/2.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/3.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/4.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/5.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/6.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/7.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/8.jpg" alt=""></a>
-            <a href=""><img src="./images/categories/9.jpg" alt=""></a>
-        </div>
+        <div class="items-container"></div>
     </main>
-
     <footer>
-         <div class="footer_container">
+        <div class="footer_container">
             <div class="footer_column">
                 <h3>ONLINE SHOPPING</h3>
 
@@ -108,8 +87,10 @@
         <hr>
 
         <div class="copyright">
-            © 2026 www.myntra.com. All rights reserved.
+            © 2023 www.myntra.com. All rights reserved.
         </div>
     </footer>
+    <script src="app.js"></script>
+</body>
 </body>
 </html>
