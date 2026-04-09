@@ -145,7 +145,6 @@ function displayBagCount(){
     else{
         bagCount.style.visibility = 'hidden';
     }
-    
 }
 
 function loadOnHome() {

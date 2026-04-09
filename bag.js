@@ -6,15 +6,6 @@ function onLoad(){
     generateItemHtml();
 }
 
-function displayBagItems(){
-    let ContainerElement = document.querySelector(".bag-items-container"); 
-    let innerHTML = '';
-    bagItemObjs.forEach(bagItem => {
-        innerHTML += generateItemHtml(bagItem);
-    });
-    ContainerElement.innerHTML = innerHTML;
-}
-
 function loadBagItemsObjs(){
     bagItemObjs = bagItems.map(itemId => {
         for (let i = 0; i < item.length; i++) {
@@ -49,7 +40,24 @@ function generateItemHtml(item){
               </div>
             </div>
 
-            <div class="remove-from-cart">X</div>
+            <div class="remove-from-cart" onclick="removeFromBag(${item.id});">X</div>
           </div>
     `;
+}
+
+function displayBagItems(){
+    let ContainerElement = document.querySelector(".bag-items-container"); 
+    let innerHTML = '';
+    bagItemObjs.forEach(bagItem => {
+        innerHTML += generateItemHtml(bagItem);
+    });
+    ContainerElement.innerHTML = innerHTML;
+}
+
+function removeFromBag(itemId){
+  bagItems = bagItems.filter(bagItemId => bagItemId != itemId);
+  localStorage.setItem('bagItems',JSON.stringify(bagItems));
+  loadBagItemsObjs();
+  displayBagItems();
+  displayBagCount();
 }
