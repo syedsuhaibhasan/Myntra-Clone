@@ -3,7 +3,7 @@ onLoad();
 function onLoad(){
     loadBagItemsObjs();
     displayBagItems();
-    generateItemHtml();
+    checkout();
 }
 
 function loadBagItemsObjs(){
@@ -45,6 +45,43 @@ function generateItemHtml(item){
     `;
 }
 
+function checkout(){
+  let bagDetailsContainerElement = document.querySelector('.bag-details-container');
+
+  let totalItem = bagItems.length;
+  let totalMRP = 0;
+  let totalDiscount = 0;
+  let totalPayement = 0;
+
+  bagItemObjs.forEach(bagItem => {
+    totalMRP += bagItem.original_price;
+    totalDiscount = bagItem.original_price - bagItem.current_price;
+    totalPayement = totalMRP - totalDiscount + 99;
+  });
+
+  bagDetailsContainerElement.innerHTML = `
+  <div class="bag-details-container">
+            <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
+            <div class="price-item">
+              <span class="price-item-tag">Total MRP</span>
+              <span class="price-item-value">Rs${totalMRP}</span>
+            </div>
+            <div class="price-item">
+              <span class="price-item-tag">Discount on MRP</span>
+              <span class="price-item-value priceDetail-base-discount">-Rs${totalDiscount}</span>
+            </div>
+            <div class="price-item">
+              <span class="price-item-tag">Convenience Fee</span>
+              <span class="price-item-value">Rs 99</span>
+            </div>
+            <hr>
+            <div class="price-footer">
+              <span class="price-item-tag">Total Amount</span>
+              <span class="price-item-value">Rs ${totalPayement}</span>
+            </div>
+          </div>`
+}
+
 function displayBagItems(){
     let ContainerElement = document.querySelector(".bag-items-container"); 
     let innerHTML = '';
@@ -59,5 +96,6 @@ function removeFromBag(itemId){
   localStorage.setItem('bagItems',JSON.stringify(bagItems));
   loadBagItemsObjs();
   displayBagItems();
+  checkout();
   displayBagCount();
 }
