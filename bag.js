@@ -55,7 +55,7 @@ function checkout(){
 
   bagItemObjs.forEach(bagItem => {
     totalMRP += bagItem.original_price;
-    totalDiscount = bagItem.original_price - bagItem.current_price;
+    totalDiscount += bagItem.original_price - bagItem.current_price;
     totalPayement = totalMRP - totalDiscount + 99;
   });
 
